@@ -162,9 +162,6 @@ static void clear_matrix(void)
     (void)led_strip_clear(g_led_strip);
 }
 
-/* -------------------------------------------------------------------------- */
-/* Peripheral initialization                                                  */
-/* -------------------------------------------------------------------------- */
 static esp_err_t init_leds(void)
 {
     led_strip_config_t strip_cfg = {
@@ -246,9 +243,6 @@ static void init_controls(void)
     ESP_ERROR_CHECK(gpio_config(&cfg));
 }
 
-/* -------------------------------------------------------------------------- */
-/* Input capture                                                               */
-/* -------------------------------------------------------------------------- */
 static bool capture_microphone(int16_t samples[FFT_SIZE])
 {
     if (!g_mic_ready) {
@@ -337,14 +331,10 @@ static bool capture_usb_audio(int16_t samples[FFT_SIZE])
         }
     }
 
-    /* No complete packet arrived. Render silence rather than freezing the UI. */
     memset(samples, 0, FFT_SIZE * sizeof(samples[0]));
     return false;
 }
 
-/* -------------------------------------------------------------------------- */
-/* Audio analysis: Hann window + in-place radix-2 FFT                          */
-/* -------------------------------------------------------------------------- */
 static void fft_256(float real[FFT_SIZE], float imag[FFT_SIZE])
 {
     unsigned j = 0;
@@ -431,9 +421,7 @@ static void analyze_audio(const int16_t samples[FFT_SIZE])
     }
 }
 
-/* -------------------------------------------------------------------------- */
-/* Visualizations                                                              */
-/* -------------------------------------------------------------------------- */
+//visualizations
 static void render_wave(const int16_t samples[FFT_SIZE], float palette, float t)
 {
     (void)t;
@@ -572,11 +560,6 @@ static void render_frame(const int16_t samples[FFT_SIZE])
     (void)led_strip_refresh(g_led_strip);
 }
 
-/* -------------------------------------------------------------------------- */
-/* Encoder + buttons                                                           */
-/* Encoder press: toggle MIC/USB audio. Mode button: cycle visualizations.     */
-/* Encoder rotation: adjust brightness.                                       */
-/* -------------------------------------------------------------------------- */
 static int read_encoder_state(void)
 {
     return (gpio_get_level(ENCODER_A_GPIO) << 1) | gpio_get_level(ENCODER_B_GPIO);
@@ -644,9 +627,7 @@ static void controls_task(void *arg)
     }
 }
 
-/* -------------------------------------------------------------------------- */
-/* Main                                                                        */
-/* -------------------------------------------------------------------------- */
+//main
 void app_main(void)
 {
     ESP_LOGI(TAG, "Starting PixelP firmware");
