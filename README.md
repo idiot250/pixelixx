@@ -1,5 +1,9 @@
 # pixelixx
 
+![schematic](images/sch.png)
+![pcb](images/pcb.png)
+![3d view pcb](images/3d.png)
+
 pixelixx is an audio/noise-reactive 16x16 rgb led dot matrix visualizer. it uses an esp32-s3 to process audio input and drive a 16x16 WS2812B RGB LED matrix, with 4 different visualization modes designed to represent the different aspect sounds as well as introduce uniqueness to the project. 
 
 I've always been interested in music, and the first thing I thought of when thinking about a screen-centric project was whether i could create something like cava (the audio spectrum visualizer) using a pixelated screen (deliberately low-res). I built pixelixx to experiment with this idea, and also to create some cool peripherals for my desk. this project also gave me another oppurtunity (excuse) to learn more across several areas of engineering, such as circuit design, pcb layout, embedded programming, digital audio processing, and hardware integration. 
