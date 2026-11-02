@@ -1,0 +1,6 @@
+CONFIG_IDF_TARGET="esp32s3"
+# Keep logs on the DevKit's USB-to-UART bridge. The native USB Serial/JTAG
+# peripheral is reserved for the binary system-audio stream.
+CONFIG_ESP_CONSOLE_UART_DEFAULT=y
+CONFIG_ESP_CONSOLE_UART_NUM=0
+CONFIG_ESP_CONSOLE_UART_BAUDRATE=115200
